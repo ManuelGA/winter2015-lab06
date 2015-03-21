@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Order placement data for Bob's Burger Bar's Bigger, Better Burger Bonanza
+-->
+
+
+<!-- An order identifies the cystomer, order type, burger and a special field  -->
+<!ELEMENT order (customer,delivery?,burger+, special)>
+
+<!-- customer name -->
+<!ELEMENT customer (#PCDATA)>
+
+<!-- types of orders, customer specified -->
+<!ATTLIST order
+    type (eatin|takeout|delivery) #REQUIRED
+>
+
+<!-- delivery instructions -->
+<!ELEMENT delivery (#PCDATA)>
+
+<!-- Special information -->
+<!ELEMENT special (#PCDATA)>
+
+<!-- burgers will be specified individually
+Burger customizaton...
+- 1 of 5 patty types
+- up to 2 chesses
+- any number of toppings
+- any number of sauces
+- special instructions
+- an optional name, should the customer wish to propose this as a menu item
+-->
+<!ELEMENT burger (patty, cheeses?, toppings*, sauces*, instructions?, name?)>
+
+<!-- patty for a burger -->
+<!ELEMENT patty (#PCDATA)>
+<!ATTLIST patty
+    type (beef|pork|turkey|bison|vege) "beef"
+>
+
+<!-- cheese for a burger -->
+<!ELEMENT cheeses EMPTY>
+<!ATTLIST cheeses
+    top (american|cheddar|swiss|jack|blue|gruyere|gouda|goat|brie) #IMPLIED
+    bottom (american|cheddar|swiss|jack|blue|gruyere|gouda|goat|brie) #IMPLIED
+>
+
+<!-- topping for a burger -->
+<!ELEMENT topping (#PCDATA)>
+<!ATTLIST topping
+    type (lettuce|tomato|raw|dill|roasted|shrooms|salsa|bacon|chilies|avocado|egg|porkbelly) #REQUIRED
+>
+<!-- sauce for a burger -->
+<!ELEMENT sauce EMPTY>
+<!ATTLIST sauce
+    type (ketchup|mustard|mayonaise|relish) #REQUIRED
+>
+
+<!-- Instructions can be anything -->
+<!ELEMENT instructions (#PCDATA)>
+
+<!-- A name can be anything -->
+<!ELEMENT name (#PCDATA)>
