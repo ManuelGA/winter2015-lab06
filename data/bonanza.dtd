@@ -5,7 +5,7 @@ Order placement data for Bob's Burger Bar's Bigger, Better Burger Bonanza
 
 
 <!-- An order identifies the cystomer, order type, burger and a special field  -->
-<!ELEMENT order (customer,delivery?,burger+, special)>
+<!ELEMENT order (customer,delivery?,burger+, special?)>
 
 <!-- customer name -->
 <!ELEMENT customer (#PCDATA)>
@@ -30,7 +30,7 @@ Burger customizaton...
 - special instructions
 - an optional name, should the customer wish to propose this as a menu item
 -->
-<!ELEMENT burger (patty, cheeses?, toppings*, sauces*, instructions?, name?)>
+<!ELEMENT burger (patty, cheeses?, topping*, sauce*, instructions?, name?)>
 
 <!-- patty for a burger -->
 <!ELEMENT patty (#PCDATA)>
@@ -53,7 +53,7 @@ Burger customizaton...
 <!-- sauce for a burger -->
 <!ELEMENT sauce EMPTY>
 <!ATTLIST sauce
-    type (ketchup|mustard|mayonaise|relish) #REQUIRED
+    type (ketchup|mustard|mayonaise|relish|fksauce) #REQUIRED
 >
 
 <!-- Instructions can be anything -->
